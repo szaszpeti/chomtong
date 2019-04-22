@@ -1,0 +1,50 @@
+{% extends 'meditater/base.html' %}
+
+{% block content %}
+
+<div class="container">
+  <h1>Meditater Detail View</h1> <br>
+    <h3>{{meditater.name}}</h3>
+
+    <table class="table">
+    <thead>
+      <tr>
+        <th>Country</th>
+        <th>Born</th>
+          <th>Email</th>
+           <th>Profession</th>
+          <th>Gender</th>
+          <th>Course</th>
+          <th>Year</th>
+          <th>Remarks</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+
+          <td>{{meditater.state}}</td>
+           <td>{{meditater.born}}</td>
+           <td><a href="{{meditater.get_email_url}}">{{meditater.email}}</a> </td>
+           <td>{{meditater.profession}}</td>
+          <td>{{meditater.gender}}</td>
+           <td>{{meditater.course_type}}</td>
+           <td>{{meditater.year}}</td>
+           <td>{{meditater.remarks}}</td>
+      </tr>
+
+
+
+    </tbody>
+  </table>
+  </div>
+
+    <br>
+
+    <a class="btn btn-danger" href="{{meditater.get_delete_url}}">Delete</a>
+    <a class="btn btn-info" href="{% url 'meditater:meditater_edit' pk=object.pk%}">Edit</a>
+    <a class="btn btn-info" href="{% url 'meditater:meditater_list'%}">ListView</a>
+
+
+
+</div>
+{% endblock %}

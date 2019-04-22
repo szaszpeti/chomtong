@@ -1,0 +1,15 @@
+{% extends 'meditater/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+    <h1>CREATE VIEW</h1>
+<div class="jumbotron">
+<form method="post">{% csrf_token %}
+    {{ form|crispy }}
+    <input type="submit" value="Createw">
+</form>
+
+    </div>
+    </div>
+
+{% endblock %}

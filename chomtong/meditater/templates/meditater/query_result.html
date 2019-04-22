@@ -1,0 +1,125 @@
+{% extends "meditater/base.html" %}
+ {% block content %}
+
+<div class="container">
+
+	{% if query %}
+	<h5><strong>QUERY FOR: {{query}} </strong></h5>
+			<h6>Number of documents were found: {{number}}</h6>
+	{% elif orszag %}
+	<h5><strong>QUERY FOR: {{orszag}} </strong></h5>
+			<h6>Number of documents were found:</h6> <h6 style="color:red">{{number}}</h6>
+
+		{% elif munka %}
+	<h5><strong>QUERY FOR: {{munka}} </strong></h5>
+			<h6>Number of documents were found:</h6> <h6 style="color:red">{{number}}</h6>
+
+	{% endif %}
+
+<form action="{% url 'meditater:meditater_list' %}" method="GET">
+<input type="submit" value="FIND NEW"><br>
+</form>
+
+<br><br>
+	 <form method="GET" action="{% url 'meditater:export_to_excel_from_search'%}">
+        <div class="input-group">
+        <input class="form-control" type="text" name="q" value="{{request.GET.q}}"/>
+        <span class="input-group-btn">
+            <input class="btn btn-default" type="submit" value="Save to Excel File"/>
+
+            </span>
+    </div>
+
+</form>
+</div>
+	<br>
+<div class="container" align="center">
+
+    {% if queryset %}
+
+	<table class="table table-hover">
+    <thead>
+      <tr>
+		  <th>Name</th>
+         <th>Country</th>
+        <th>Born</th>
+          <th>Email</th>
+           <th>Profession</th>
+          <th>Gender</th>
+          <th>Course</th>
+          <th>Year</th>
+      </tr>
+    </thead>
+    <tbody>
+   {% for meditater in queryset %}
+      <tr>
+        <td><a href="{{meditater.get_absolut_url}}"> {{meditater.name}}</td>
+        <td>{{meditater.state}}</td>
+           <td>{{meditater.born}}</td>
+           <td>{{meditater.email}}</td>
+           <td>{{meditater.profession}}</td>
+          <td>{{meditater.gender}}</td>
+           <td>{{meditater.course_type}}</td>
+           <td>{{meditater.year}}</td>
+      </tr>
+    {% endfor %}
+{%endif%}
+
+    </tbody>
+  </table>
+
+
+
+
+</div>
+	</div>
+
+
+
+<!--{% if all_meditaters %}-->
+
+	<!--<table class="table table-hover">-->
+    <!--<thead>-->
+      <!--<tr>-->
+		  <!--<th>Name</th>-->
+         <!--<th>Country</th>-->
+        <!--<th>Born</th>-->
+          <!--<th>Email</th>-->
+           <!--<th>Profession</th>-->
+          <!--<th>Gender</th>-->
+          <!--<th>Course</th>-->
+          <!--<th>Year</th>-->
+      <!--</tr>-->
+    <!--</thead>-->
+    <!--<tbody>-->
+   <!--{% for meditater in all_meditaters %}-->
+      <!--<tr>-->
+        <!--<td><a href="{{meditater.get_absolut_url}}"> {{meditater.name}}</td>-->
+        <!--<td>{{meditater.state}}</td>-->
+           <!--<td>{{meditater.born}}</td>-->
+           <!--<td>{{meditater.email}}</td>-->
+           <!--<td>{{meditater.profession}}</td>-->
+          <!--<td>{{meditater.gender}}</td>-->
+           <!--<td>{{meditater.course_type}}</td>-->
+           <!--<td>{{meditater.year}}</td>-->
+      <!--</tr>-->
+    <!--{% endfor %}-->
+
+
+    <!--</tbody>-->
+  <!--</table>-->
+
+
+    <!--&lt;!&ndash;{% for meditater in all_meditaters %}&ndash;&gt;-->
+    <!--&lt;!&ndash;<a class="btn  btn-primary" href="{{meditater.get_absolut_url}}"> {{ meditater.name }}</a>&ndash;&gt;-->
+	<!--&lt;!&ndash;<br>&ndash;&gt;-->
+		<!--&lt;!&ndash;<br>&ndash;&gt;-->
+    <!--&lt;!&ndash;{% endfor %}&ndash;&gt;-->
+<!--{% else %}-->
+    <!--<h3>No meditator was found!</h3>-->
+
+<!--</div>-->
+	<!--</div>-->
+<!--{% endif %}-->
+
+{% endblock %}

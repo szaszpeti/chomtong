@@ -1,0 +1,24 @@
+{% extends 'meditater/base.html' %}
+
+{% block content %}
+
+<div class="container">
+  <div class="jumbotron">
+  <h1>Welcome to the Chom Tong Database</h1>
+    <div class="jumbotron">
+  <a class="btn btn-info" href="{% url 'meditater:meditater_list' %}">List of all meditaters ( {{view.meditaters | length}} )</a>
+  <br>
+   <br>
+  <a class="btn btn-info" href="{% url 'meditater:meditater_create' %}">Add new Meditater</a>
+    <br>
+   <br>
+
+       <a class="btn btn-info" href="{% url 'meditater:meditater_statistic' %}">Statistic</a>
+    <br>
+   <br>
+
+  <a class="btn btn-info" href="{% url 'meditater:upload_file' %}">Upload File</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

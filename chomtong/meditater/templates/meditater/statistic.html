@@ -1,0 +1,162 @@
+{% extends 'meditater/base.html' %}
+{% block content %}
+
+<div class="container">
+    <h1>STATISTIC</h1>
+
+    <div class="jumbotron">
+  <a class="btn btn-info" href="{% url 'meditater:statistic_country' %}">Country</a>
+  <br>
+   <br>
+  <a class="btn btn-info" href="{% url 'meditater:statistic_profession' %}">Profession</a>
+    <br>
+         <br>
+  <a class="btn btn-info" href="{% url 'meditater:statistic_gender' %}">Gender</a>
+    <br>
+   <br>
+
+       <a class="btn btn-info" href="{% url 'meditater:statistic_born' %}">Born</a>
+    <br>
+   <br>
+
+  <a class="btn btn-info" href="{% url 'meditater:statistic_year' %}">Year</a>
+    </div>
+  </div>
+</div>
+
+{% if state_dict %}
+    <table class="table">
+    <thead>
+      <tr>
+        <th>Country</th>
+        <th>Number of meditaters</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for x, y in state_dict.items %}
+        <tr>
+        <td>{{x}}</td>
+          <td>{{y}}</td>
+              </tr>
+
+        {% endfor %}
+    </tbody>
+  </table>
+
+{% elif profession_dict%}
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Profession</th>
+        <th>Number of meditaters</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for x, y in profession_dict.items %}
+        <tr>
+        <td>{{x}}</td>
+          <td>{{y}}</td>
+              </tr>
+
+        {% endfor %}
+    </tbody>
+  </table>
+
+{% elif profession_dict%}
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Profession</th>
+        <th>Number of meditaters</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for x, y in profession_dict.items %}
+        <tr>
+        <td>{{x}}</td>
+          <td>{{y}}</td>
+              </tr>
+
+        {% endfor %}
+    </tbody>
+  </table>
+
+{% elif gender_dict%}
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Gender</th>
+        <th>Number of meditaters</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for x, y in gender_dict.items %}
+        <tr>
+        <td>{{x}}</td>
+          <td>{{y}}</td>
+              </tr>
+
+        {% endfor %}
+    </tbody>
+  </table>
+
+{% elif born_dict%}
+
+  <table class="table">
+    <thead>
+      <tr>
+          <th>Year of born</th>
+        <th>Number of meditaters</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for x, y in born_dict.items %}
+        <tr>
+        <td>{{x}}</td>
+          <td>{{y}}</td>
+              </tr>
+
+        {% endfor %}
+    </tbody>
+  </table>
+
+{% elif year_dict%}
+
+  <table class="table">
+    <thead>
+      <tr>
+          <th>Year</th>
+        <th>Number of meditaters</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for x, y in year_dict.items %}
+        <tr>
+        <td>{{x}}</td>
+          <td>{{y}}</td>
+              </tr>
+
+        {% endfor %}
+    </tbody>
+  </table>
+
+{%endif%}
+
+
+
+
+
+
+
+     </div>
+</div>
+
+
+
+
+</div>
+    </div>
+{% endblock %}

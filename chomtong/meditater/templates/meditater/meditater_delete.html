@@ -1,0 +1,19 @@
+{% extends 'meditater/base.html' %}
+
+{% block content %}
+
+<div class="container">
+  <h1>Meditater Delete View</h1>
+
+    <p>Are your sure you want to delete {{object.name}} 's profile</p>
+
+    <form method="POST">
+        {% csrf_token%}
+        <input type="submit" class="btn btn-danger" value="Delete">
+
+         <a class="btn btn-info" href="{% url 'meditater:meditater_list' %}" >CANCEL</a>
+    </form>
+
+
+</div>
+{% endblock %}

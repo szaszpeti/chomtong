@@ -1,0 +1,62 @@
+{% extends 'meditater/base.html' %}
+
+{% block content %}
+
+<div class="container">
+  <h1>Meditater List View ({{object_list|length}})</h1>
+    <br>
+    <br>
+
+
+
+    <form method="GET" action="{% url 'meditater:find_index'%}">
+        <div class="input-group">
+        <input class="form-control" type="text" name="q" placeholder="Search post" value=""/>
+        <span class="input-group-btn">
+            <input class="btn btn-default" type="submit" value="Search"/>
+
+            </span>
+    </div>
+
+</form>
+<br>
+    <br>
+
+<br>
+    <br>
+ <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Country</th>
+        <th>Born</th>
+          <th>Email</th>
+           <th>Profession</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for meditater in object_list %}
+    {% if meditater.email and meditater.name %}
+      <tr>
+        <td><a href="{{meditater.get_absolut_url}}"> {{meditater.name}}</td>
+        <td>{{meditater.state}}
+           <td>{{meditater.born}}</td>
+           <td>{{meditater.email}}</td>
+           <td>{{meditater.profession}}</td>
+      </tr>
+    {% endif %}
+    {% endfor %}
+
+
+    </tbody>
+  </table>
+    <!--<ol>-->
+        <!--{% for meditater in object_list %}-->
+        <!--<li><a href="{{meditater.get_absolut_url}}"> {{meditater.name}} - {{ meditater.state }}</a></li>-->
+        <!--{% endfor %}-->
+
+    <!--</ol>-->
+
+
+</div>
+{% endblock %}

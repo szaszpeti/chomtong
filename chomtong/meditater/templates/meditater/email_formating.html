@@ -1,0 +1,27 @@
+{% extends 'meditater/base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+<div class="jumbotron">
+<h6>Write message to: {{name}} - {{email}} - {{country}} </h6>
+
+    <br><br>
+     <form class="form-signin" method="POST">
+                 {% csrf_token %}
+                <span id="reauth-email" class="reauth-email"></span>
+                <input type="text" name="tema" id="inputEmail" class="form-control" placeholder="Subject" value="" required autofocus>
+                <input type="text" name="uzenet" id="inputEmail" class="form-control" placeholder="Message" value="" required autofocus>
+                <button class="btn btn-primary" type="submit">Send Message</button>
+
+                <br><br>
+</form>
+
+    </div>
+
+
+
+    </div>
+
+{% endblock %}
